@@ -3,246 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سیستەمی پەیمانگا - ئۆنلاین</title>
+    <title>داشبۆردی بەڕێوەبەر</title>
     <style>
         :root {
             --primary: #4f46e5;
             --primary-dark: #4338ca;
-            --secondary: #06b6d4;
             --bg-color: #f3f4f6;
             --card-bg: #ffffff;
             --text-color: #1f2937;
             --border-color: #d1d5db;
         }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
-        h1, h2, h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            transition: border 0.3s;
-        }
-        input:focus, select:focus {
-            border-color: var(--primary);
-        }
-        button {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        button:hover {
-            background-color: var(--primary-dark);
-        }
-        .btn-secondary {
-            background-color: #6b7280;
-            margin-top: 10px;
-        }
-        .btn-secondary:hover {
-            background-color: #4b5563;
-        }
-        .btn-danger {
-            background-color: #ef4444;
-            padding: 6px 12px;
-            font-size: 14px;
-            width: auto;
-        }
-        .btn-danger:hover {
-            background-color: #dc2626;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .flex-row {
-            display: flex;
-            gap: 10px;
-        }
-        .flex-row button {
-            flex: 1;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #eef2ff;
-            color: var(--primary);
-        }
-        .alert {
-            padding: 10px;
-            background-color: #fee2e2;
-            color: #b91c1c;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        .success {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-        #loadingOverlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.7);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 999;
-            font-size: 18px; font-weight: bold; color: var(--primary);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        h1, h3 { color: var(--primary); margin-bottom: 15px; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; outline: none; }
+        button { background-color: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 8px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; }
+        button:hover { background-color: var(--primary-dark); }
+        .btn-danger { background-color: #ef4444; padding: 6px 12px; font-size: 14px; width: auto; }
+        .btn-danger:hover { background-color: #dc2626; }
+        .hidden { display: none !important; }
+        .flex-row { display: flex; gap: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 14px; }
+        th, td { border: 1px solid var(--border-color); padding: 10px; text-align: center; }
+        th { background-color: #eef2ff; color: var(--primary); }
+        .alert { padding: 10px; background-color: #fee2e2; color: #b91c1c; border-radius: 8px; margin-bottom: 15px; text-align: center; }
+        .success { background-color: #d1fae5; color: #065f46; }
+        #loadingOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); display: flex; justify-content: center; align-items: center; z-index: 999; font-size: 18px; font-weight: bold; color: var(--primary); }
     </style>
 </head>
 <body>
 
-<div id="loadingOverlay" class="hidden">چاوەڕوانبە... دەبەسترێتەوە بە سێرڤەر</div>
+<div id="loadingOverlay" class="hidden">چاوەڕوانبە...</div>
 
 <div class="container">
-
-    <!-- بەشی سەرەتا (چوونەژوورەوە) -->
-    <div id="loginSection" class="card">
-        <h1>سیستەمی پەیمانگا</h1>
+    <!-- چوونەژوورەوەی مدیر -->
+    <div id="managerLoginSection" class="card">
+        <h1>چوونەژوورەوەی بەڕێوەبەر</h1>
         <div id="loginAlert" class="alert hidden"></div>
         <div class="form-group">
-            <label>جۆری بەکارهێنەر هەڵبژێرە:</label>
-            <select id="loginType" onchange="toggleLoginFields()">
-                <option value="student">قوتابی</option>
-                <option value="manager">بەڕێوەبەر (مدیر)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>ناوی بەکارهێنەر (Username):</label>
-            <input type="text" id="usernameInput" placeholder="ناوی بەکارهێنەر بنووسە">
-        </div>
-
-        <div class="form-group">
-            <label>وشەی تێپەڕ (Password):</label>
-            <input type="password" id="passwordInput" placeholder="پاسوۆرد بنووسە">
-        </div>
-
-        <button onclick="login()">چوونە ژوورەوە</button>
-        <button class="btn-secondary" onclick="showRegisterSection()">خۆ تۆمارکردنی قوتابی نوێ</button>
-    </div>
-
-    <!-- بەشی خۆتۆمارکردنی قوتابی -->
-    <div id="registerSection" class="card hidden">
-        <h1>خۆتۆمارکردنی قوتابی نوێ</h1>
-        <div id="regAlert" class="alert hidden"></div>
-        
-        <div class="form-group">
-            <label>ناوی قوتابی:</label>
-            <input type="text" id="regName">
-        </div>
-        <div class="form-group">
-            <label>ناوی باوکی قوتابی:</label>
-            <input type="text" id="regFatherName">
-        </div>
-        <div class="form-group">
-            <label>ژمارە مۆبایلی باوک / قوتابی:</label>
-            <input type="text" id="regPhone">
-        </div>
-        <div class="form-group">
-            <label>قۆناغ:</label>
-            <select id="regStage">
-                <option value="قۆناغی 1">قۆناغی 1</option>
-                <option value="قۆناغی 2">قۆناغی 2</option>
-                <option value="قۆناغی 3">قۆناغی 3</option>
-                <option value="قۆناغی 4">قۆناغی 4</option>
-                <option value="قۆناغی 5">قۆناغی 5</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>کلاس:</label>
-            <input type="text" id="regClass" placeholder="بۆ نموونە: پۆلی A">
-        </div>
-        <div class="form-group">
-            <label>ناوی بەکارهێنەر (بۆ چوونەژوورەوە):</label>
-            <input type="text" id="regUsername">
+            <label>ناوی بەکارهێنەر:</label>
+            <input type="text" id="mUser" value="muder">
         </div>
         <div class="form-group">
             <label>پاسوۆرد:</label>
-            <input type="password" id="regPassword">
+            <input type="password" id="mPass" placeholder="پاسوۆرد بنووسە">
         </div>
-
-        <button onclick="registerStudent()">تۆمارکردن</button>
-        <button class="btn-secondary" onclick="showLoginSection()">گەڕانەوە بۆ چوونەژوورەوە</button>
+        <button onclick="managerLogin()">چوونە ژوورەوە</button>
     </div>
 
-    <!-- داشبۆردی بەڕێوەبەر (مدیر) -->
+    <!-- داشبۆردی مدیر -->
     <div id="managerDashboard" class="card hidden">
         <h1>داشبۆردی بەڕێوەبەر (مدیر)</h1>
         <div style="text-align: left; margin-bottom: 15px;">
-            <button class="btn-danger" style="width: auto;" onclick="logout()">چوونەدەرەوە</button>
+            <button class="btn-danger" onclick="logout()">چوونەدەرەوە</button>
         </div>
 
         <hr style="margin: 20px 0;">
 
-        <h3>ئەپلۆد و ناردنی نمرە بۆ قوتابی</h3>
+        <h3>ناردنی نمرە بۆ قوتابی</h3>
         <div id="gradeAlert" class="alert hidden"></div>
         <div class="form-group">
             <label>ناوی بەکارهێنەری قوتابی (Username):</label>
-            <input type="text" id="targetStudentUser" placeholder="ئەو یوزەرەی قوتابی کە نمرەی بۆ دەنێریت">
+            <input type="text" id="targetStudentUser" placeholder="یوزەری قوتابی بنووسە">
         </div>
         <div class="form-group">
-            <label>بابەت یان کورتەی نمرەکان:</label>
-            <input type="text" id="gradeSubject" placeholder="بۆ نموونە: تاقیکردنەوەی کۆتایی وەرزی یەکەم">
+            <label>بابەت یان کورتە:</label>
+            <input type="text" id="gradeSubject" placeholder="بۆ نموونە: تاقیکردنەوەی کۆتایی">
         </div>
         <div class="form-group">
-            <label>نمرەکان / ئەنجام:</label>
-            <textarea id="gradeDetails" rows="4" placeholder="بۆ نموونە: بیرکاری: 90، ئینگلیزی: 85"></textarea>
+            <label>نمرەکان:</label>
+            <textarea id="gradeDetails" rows="3" placeholder="وردەکاری نمرەکان..."></textarea>
         </div>
-        <button onclick="uploadGrade()">ناردنی نمرە بۆ قوتابی</button>
+        <button onclick="uploadGrade()">ناردنی نمرە</button>
 
         <hr style="margin: 30px 0;">
 
-        <h3>لیستی قوتابیان و فلتەرکردن</h3>
+        <h3>لیستی قوتابیان</h3>
         <div class="flex-row" style="margin-bottom: 15px;">
             <select id="filterStage" onchange="filterStudents()">
                 <option value="">هەموو قۆناغەکان</option>
@@ -255,37 +95,21 @@
             <input type="text" id="filterClass" placeholder="فلتەر بە کلاس..." onkeyup="filterStudents()">
         </div>
 
-        <div style="overflow-x: auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ناوی قوتابی</th>
-                        <th>ناوی باوک</th>
-                        <th>مۆبایل</th>
-                        <th>قۆناغ</th>
-                        <th>کلاس</th>
-                        <th>یوزەرنەم</th>
-                        <th>کردار</th>
-                    </tr>
-                </thead>
-                <tbody id="studentsTableBody"></tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ناو</th>
+                    <th>باوک</th>
+                    <th>مۆبایل</th>
+                    <th>قۆناغ</th>
+                    <th>کلاس</th>
+                    <th>یوزەرنەم</th>
+                    <th>کردار</th>
+                </tr>
+            </thead>
+            <tbody id="studentsTableBody"></tbody>
+        </table>
     </div>
-
-    <!-- داشبۆردی قوتابی -->
-    <div id="studentDashboard" class="card hidden">
-        <h1>ئەنجامی قوتابی</h1>
-        <div style="text-align: left; margin-bottom: 15px;">
-            <button class="btn-danger" style="width: auto;" onclick="logout()">چوونەدەرەوە</button>
-        </div>
-        
-        <div id="studentInfoBox" style="background: #eef2ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;"></div>
-
-        <h3>نمرە و ئەنجامە نێردراوەکانی بەڕێوەبەر:</h3>
-        <div id="studentGradesContainer"></div>
-    </div>
-
 </div>
 
 <script>
@@ -294,23 +118,16 @@
     const BASE_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
 
     let dbData = { students: [], grades: [] };
-    let currentUser = JSON.parse(localStorage.getItem('institute_current_user')) || null;
 
-    function showLoading(show) {
-        document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
-    }
+    function showLoading(show) { document.getElementById('loadingOverlay').classList.toggle('hidden', !show); }
 
     async function fetchDB() {
         showLoading(true);
         try {
-            let res = await fetch(BASE_URL, {
-                headers: { 'X-Master-Key': API_KEY }
-            });
+            let res = await fetch(BASE_URL, { headers: { 'X-Master-Key': API_KEY } });
             let json = await res.json();
             dbData = json.record || { students: [], grades: [] };
-        } catch (e) {
-            alert('کێشە لە پەیوەندیکردن بە سێرڤەرەوە هەیە!');
-        }
+        } catch (e) { alert('کێشەی سێرڤەر!'); }
         showLoading(false);
     }
 
@@ -319,155 +136,37 @@
         try {
             await fetch(BASE_URL, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Master-Key': API_KEY
-                },
+                headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
                 body: JSON.stringify(dbData)
             });
-        } catch (e) {
-            alert('کێشە لە پاشەکەوتکردنی داتا هەیە!');
-        }
+        } catch (e) { alert('کێشەی پاشەکەوتکردن!'); }
         showLoading(false);
     }
 
-    window.onload = async function() {
-        await fetchDB();
-        if (currentUser) {
-            if (currentUser.role === 'manager') {
-                showManagerDashboard();
-            } else if (currentUser.role === 'student') {
-                // نوێکردنەوەی زانیاری قوتابی ئەگەر گۆڕابێت
-                let found = dbData.students.find(s => s.username === currentUser.username);
-                if (found) currentUser = { role: 'student', ...found };
-                showStudentDashboard();
-            }
+    window.onload = function() {
+        if (localStorage.getItem('is_manager') === 'true') {
+            showDashboard();
         }
     }
 
-    function toggleLoginFields() {
-        let type = document.getElementById('loginType').value;
-        let userInput = document.getElementById('usernameInput');
-        if (type === 'manager') {
-            userInput.value = 'muder';
+    async function managerLogin() {
+        let u = document.getElementById('mUser').value.trim();
+        let p = document.getElementById('mPass').value.trim();
+        if (u === 'muder' && p === 'ashna0101') {
+            localStorage.setItem('is_manager', 'true');
+            showDashboard();
         } else {
-            userInput.value = '';
+            let alertBox = document.getElementById('loginAlert');
+            alertBox.innerText = 'پاسوۆرد هەڵەیە!';
+            alertBox.classList.remove('hidden');
         }
     }
 
-    function showRegisterSection() {
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('registerSection').classList.remove('hidden');
-    }
-
-    function showLoginSection() {
-        document.getElementById('registerSection').classList.add('hidden');
-        document.getElementById('loginSection').classList.remove('hidden');
-    }
-
-    function showAlert(elementId, text, isSuccess = false) {
-        let alertBox = document.getElementById(elementId);
-        alertBox.innerText = text;
-        alertBox.classList.remove('hidden');
-        if (isSuccess) alertBox.classList.add('success');
-        else alertBox.classList.remove('success');
-    }
-
-    async function login() {
-        let type = document.getElementById('loginType').value;
-        let user = document.getElementById('usernameInput').value.trim();
-        let pass = document.getElementById('passwordInput').value.trim();
-
-        await fetchDB(); // هێنانی داتای نوێ پێش چوونەژوورەوە
-
-        if (type === 'manager') {
-            if (user === 'muder' && pass === 'ashna0101') {
-                currentUser = { role: 'manager', username: 'muder' };
-                localStorage.setItem('institute_current_user', JSON.stringify(currentUser));
-                showManagerDashboard();
-            } else {
-                showAlert('loginAlert', 'ناوی بەکارهێنەر یان پاسوۆردی بەڕێوەبەر هەڵەیە!');
-            }
-        } else {
-            let found = dbData.students.find(s => s.username === user && s.password === pass);
-            if (found) {
-                currentUser = { role: 'student', ...found };
-                localStorage.setItem('institute_current_user', JSON.stringify(currentUser));
-                showStudentDashboard();
-            } else {
-                showAlert('loginAlert', 'یوزەرنەم یان پاسوۆردی قوتابی هەڵەیە یاخود تۆمار نەکراوە!');
-            }
-        }
-    }
-
-    async function registerStudent() {
-        let name = document.getElementById('regName').value.trim();
-        let fatherName = document.getElementById('regFatherName').value.trim();
-        let phone = document.getElementById('regPhone').value.trim();
-        let stage = document.getElementById('regStage').value;
-        let className = document.getElementById('regClass').value.trim();
-        let username = document.getElementById('regUsername').value.trim();
-        let password = document.getElementById('regPassword').value.trim();
-
-        if (!name || !fatherName || !phone || !className || !username || !password) {
-            showAlert('regAlert', 'تکایە هەموو خانەکان پڕبکەرەوە!');
-            return;
-        }
-
+    async function showDashboard() {
         await fetchDB();
-        if (dbData.students.some(s => s.username === username) || username === 'muder') {
-            showAlert('regAlert', 'ئەم ناوی بەکارهێنەرە پێشتر هەیە!');
-            return;
-        }
-
-        let newStudent = { name, fatherName, phone, stage, className, username, password };
-        dbData.students.push(newStudent);
-        await updateDB();
-
-        showAlert('regAlert', 'خۆتۆمارکردن سەرکەوتبوو! ئێستا دەتوانیت بچیتە ژوورەوە.', true);
-        setTimeout(() => showLoginSection(), 1500);
-    }
-
-    async function showManagerDashboard() {
-        await fetchDB();
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('registerSection').classList.add('hidden');
-        document.getElementById('studentDashboard').classList.add('hidden');
+        document.getElementById('managerLoginSection').classList.add('hidden');
         document.getElementById('managerDashboard').classList.remove('hidden');
         filterStudents();
-    }
-
-    function showStudentDashboard() {
-        document.getElementById('loginSection').classList.add('hidden');
-        document.getElementById('registerSection').classList.add('hidden');
-        document.getElementById('managerDashboard').classList.add('hidden');
-        document.getElementById('studentDashboard').classList.remove('hidden');
-
-        let infoBox = document.getElementById('studentInfoBox');
-        infoBox.innerHTML = `
-            <strong>ناوی قوتابی:</strong> ${currentUser.name} ${currentUser.fatherName}<br>
-            <strong>قۆناغ:</strong> ${currentUser.stage} | <strong>کلاس:</strong> ${currentUser.className}<br>
-            <strong>ژمارە مۆبایل:</strong> ${currentUser.phone}
-        `;
-
-        let studentGrades = dbData.grades.filter(g => g.studentUser === currentUser.username);
-        let container = document.getElementById('studentGradesContainer');
-        
-        if (studentGrades.length === 0) {
-            container.innerHTML = '<p style="color: #6b7280; text-align: center; padding: 20px;">هێشتا هیچ نمرەیەک بۆت نەنیراوە.</p>';
-        } else {
-            let html = '';
-            studentGrades.forEach(g => {
-                html += `
-                    <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-                        <h4 style="color: var(--primary); margin-bottom: 5px;">${g.subject}</h4>
-                        <p style="white-space: pre-line;">${g.details}</p>
-                        <small style="color: #9ca3af; display: block; margin-top: 5px;">بەروار: ${g.date}</small>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
     }
 
     async function uploadGrade() {
@@ -476,34 +175,34 @@
         let details = document.getElementById('gradeDetails').value.trim();
 
         if (!studentUser || !subject || !details) {
-            showAlert('gradeAlert', 'تکایە هەموو خانەکانی نمرە پڕبکەرەوە!');
+            let alertBox = document.getElementById('gradeAlert');
+            alertBox.innerText = 'تکایە هەموو خانەکان پڕبکەرەوە!';
+            alertBox.classList.remove('hidden');
             return;
         }
 
         await fetchDB();
-        let targetExists = dbData.students.some(s => s.username === studentUser);
-        if (!targetExists) {
-            showAlert('gradeAlert', 'ئەم یوزەرنەمەی قوتابی بوونی نییە!');
+        if (!dbData.students.some(s => s.username === studentUser)) {
+            let alertBox = document.getElementById('gradeAlert');
+            alertBox.innerText = 'ئەم یوزەرەی قوتابی بوونی نییە!';
+            alertBox.classList.remove('hidden');
             return;
         }
 
-        let newGrade = {
-            studentUser,
-            subject,
-            details,
-            date: new Date().toLocaleDateString('en-GB')
-        };
-
-        dbData.grades.push(newGrade);
+        dbData.grades.push({ studentUser, subject, details, date: new Date().toLocaleDateString('en-GB') });
         await updateDB();
 
-        showAlert('gradeAlert', 'نمرە و ئەنجامەکە سەرکەوتووانە نێردرا!', true);
+        let alertBox = document.getElementById('gradeAlert');
+        alertBox.innerText = 'نمرە سەرکەوتووانە نێردرا!';
+        alertBox.className = 'alert success';
+        alertBox.classList.remove('hidden');
         document.getElementById('targetStudentUser').value = '';
         document.getElementById('gradeSubject').value = '';
         document.getElementById('gradeDetails').value = '';
     }
 
-    function filterStudents() {
+    async function filterStudents() {
+        await fetchDB();
         let stageFilter = document.getElementById('filterStage').value;
         let classFilter = document.getElementById('filterClass').value.toLowerCase();
         let tbody = document.getElementById('studentsTableBody');
@@ -516,7 +215,7 @@
         });
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" style="color: #6b7280;">هیچ قوتابییەک نەدۆزرایەوە</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7">هیچ قوتابییەک نەدۆزرایەوە</td></tr>`;
             return;
         }
 
@@ -536,7 +235,7 @@
     }
 
     async function deleteStudent(username) {
-        if (confirm('ئایا دڵنیای لە سڕینەوەی ئەم قوتابییە؟')) {
+        if (confirm('دڵنیای لە سڕینەوەی ئەم قوتابییە؟')) {
             dbData.students = dbData.students.filter(s => s.username !== username);
             dbData.grades = dbData.grades.filter(g => g.studentUser !== username);
             await updateDB();
@@ -545,13 +244,9 @@
     }
 
     function logout() {
-        currentUser = null;
-        localStorage.removeItem('institute_current_user');
-        document.getElementById('managerDashboard').classList.add('hidden');
-        document.getElementById('studentDashboard').classList.add('hidden');
-        showLoginSection();
+        localStorage.removeItem('is_manager');
+        location.reload();
     }
 </script>
-
 </body>
 </html>
