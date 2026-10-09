@@ -127,6 +127,8 @@
             let res = await fetch(BASE_URL, { headers: { 'X-Master-Key': API_KEY } });
             let json = await res.json();
             dbData = json.record || { students: [], grades: [] };
+            if (!dbData.students) dbData.students = [];
+            if (!dbData.grades) dbData.grades = [];
         } catch (e) { alert('کێشەی سێرڤەر!'); }
         showLoading(false);
     }
@@ -184,7 +186,7 @@
         await fetchDB();
         if (!dbData.students.some(s => s.username === studentUser)) {
             let alertBox = document.getElementById('gradeAlert');
-            alertBox.innerText = 'ئەم یوزەرەی قوتابی بوونی نییە!';
+            alertBox.innerText = 'ئەم یوزەری قوتابی بوونی نییە!';
             alertBox.classList.remove('hidden');
             return;
         }
